@@ -1,5 +1,7 @@
 import ReactDOM from 'react-dom'
-import App.js from './views/App'
+import React from 'react'
+import App from './views/App'
 
+console.log(document.querySelector('body'))
 
-ReactDOM.render(<App.js/>, document.querySelector(body))
+ReactDOM.render(<App/>, document.querySelector('body'))

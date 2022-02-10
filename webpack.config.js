@@ -27,11 +27,11 @@ module.exports = {
         }
       },
       {
-        test: /\.s[ac]ss/$,
+        test: /\.s[ac]ss$/i,
         use: ['style-loader', 'sass-loader']
       },
       {
-        test: /\.(png|jpe?g)/$,
+        test: /\.(png|jpe?g$)/i,
         use: 'file-loader'
       }
     ]
