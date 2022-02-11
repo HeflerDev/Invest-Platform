@@ -8,6 +8,10 @@ import {
 
 const dispatch = useDispatch()
 
+/**
+ * @param { String } indexing : The kind of indexing
+ * @param { String } revenue : The kind of revenue
+ */
 export const fetchSimulations = ({ indexing, revenue }) => {
   dispatch(swapLoadingState(true))
   fetch(`http://localhost:3000/simulacoes?tipoIndexacao=${indexing}&tipoRendimento=${revenue}`)
