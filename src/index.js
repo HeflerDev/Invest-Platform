@@ -1,7 +1,12 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import App from './views/App'
+import store from './store/store'
+import { Provider } from 'react-redux'
 
-console.log(document.querySelector('body'))
-
-ReactDOM.render(<App/>, document.querySelector('body'))
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('body')
+)

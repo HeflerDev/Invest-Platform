@@ -1,9 +1,10 @@
 import React from "react";
+import './App.scss'
 
 const App = () => (
-  <>
-  Hello World
-  </>
+  <main>
+    Hello World
+  </main>
 )
 
 export default App
