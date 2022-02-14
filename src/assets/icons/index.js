@@ -1,2 +1,2 @@
-export { AttentionIcon } from './AttentionIcon'
-export { CheckIcon } from './CheckIcon'
+export {AttentionIcon} from './AttentionIcon.jsx';
+export {CheckIcon} from './CheckIcon.jsx';

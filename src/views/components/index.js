@@ -1,4 +1,4 @@
-export { Heading } from './Heading'
-export { Label } from './Label'
-export { InputField } from './InputField'
-export { Buttons } from './Buttons'
+export {Heading} from './Heading.jsx';
+export {Label} from './Label.jsx';
+export {InputField} from './InputField.jsx';
+export {Buttons} from './Buttons.jsx';
