@@ -14,7 +14,7 @@ import {
 import Form from './Form'
 
 const App = () => (
-  <div>
+  <section>
     <Heading headingTagSize={1} text={"Simulador de Investimentos"} />
     <Container>
       <Row>
@@ -23,7 +23,7 @@ const App = () => (
         </Col>
       </Row>
     </Container>
-  </div>
+  </section>
 )
 
 export default App

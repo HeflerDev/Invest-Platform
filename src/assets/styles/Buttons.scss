@@ -1,0 +1,48 @@
+button {
+  background-color: #ffffff00;
+  border: none;
+  border-left: solid $dark 1px;
+  border-right: solid$dark 1px;
+  padding: 0.5rem 0.8rem;
+  min-width: 8rem;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  svg {
+    margin: auto 2px;
+  }
+}
+
+.btn-container {
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+  border-radius: 10px;
+  border-top: solid $dark 1px;
+  border-bottom: solid $dark 1px;
+  display: flex;
+}
+
+.small {
+  min-width: 5rem;
+}
+
+.btn-default {
+  border-radius: 5px;
+  border: solid $dark 1px;
+  width: 100%;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.submit {
+  border: none ;
+  background-color: $primary;
+}
+
+.active {
+  background-color: $primary;
+  color: $light;
+}

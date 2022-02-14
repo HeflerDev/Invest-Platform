@@ -1,6 +1,21 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import '../assets/styles/Heading.scss'
+$primary: #ed8f52;
+$secondary: #efefef;
+$success: #408032;
 
+body {
+  font-family: Montserrat, sans-serif;
+}
 
+section {
+  background-color: $secondary;
+  color: $dark;
+  padding: 2rem 1rem;
+  font-size: 12px;
+}
 
+@import '../assets/styles/Heading.scss';
+@import '../assets/styles/FormInput.scss';
+@import '../assets/styles/Buttons.scss';

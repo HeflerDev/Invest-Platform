@@ -3,12 +3,12 @@ import { Col } from "react-bootstrap";
 import PropTypes from 'prop-types'
 
 export const Label = ({text, icon}) => (
-  <Col>
+  <Col xs={12} className="input-label d-flex justify-content-between">
     <label>
       {text}
     </label>
     {
-      icon ? icon : null
+      icon && icon
     }
   </Col>
 )
