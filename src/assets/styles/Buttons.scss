@@ -40,6 +40,9 @@ button {
 .submit {
   border: none ;
   background-color: $primary;
+  &:disabled {
+    background-color: #969696;
+  }
 }
 
 .active {

@@ -4,6 +4,7 @@ input {
   border-bottom: solid $dark 1px;
   outline: none;
   width: 100%;
+  font-size: 16px;
 }
 
 .input-field {
@@ -12,4 +13,12 @@ input {
 
 .input-label {
   margin: 1rem auto;
+}
+
+.error {
+  color: red;
+}
+
+.error-input {
+  border-bottom: solid red 1px;
 }

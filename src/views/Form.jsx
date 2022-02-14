@@ -157,7 +157,12 @@ const Form = () => {
             className="btn-default"
             onClick={clearFields}
             text="Limpar Campos" />
-          <input className="btn-default submit" type="submit" value="Simular" />
+          <input
+            className="btn-default submit"
+            type="submit"
+            value="Simular"
+            disabled={validate(formData).length !== 0}
+          />
         </Col>
       </Row>
     </form>
