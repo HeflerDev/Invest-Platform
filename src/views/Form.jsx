@@ -42,13 +42,29 @@ const defaultData = {
 
 const Form = () => {
   const [formData, setFormData] = useState(defaultData);
-  const [lastKey, setLastKey] = useState('')
+  const [lastKey, setLastKey] = useState('');
 
   useEffect(() => {
-    document.querySelectorAll('input').forEach(item => {
-      item.addEventListener('input', (e) => setLastKey(e.key))
-    })
-  }, [])
+    document.querySelectorAll('input').forEach((item) => {
+      item.addEventListener('keydown', (e) => setLastKey(e.key));
+    });
+
+    fetch('http://localhost:3000/indicadores')
+        .then((res) => res.json())
+        .then((data) => {
+          const obj = {...formData};
+          data.forEach((item) => {
+            if (item.nome === 'cdi') {
+              obj.cdi_index =`${item.valor} %`.replace(/\./g, ',')
+            } else if (item.nome === 'ipca') {
+              obj.ipca_revenue = `${item.valor} %`.replace(/\./g, ',')
+            } else {
+              new Error('Erro na chamada: DB não compatível.');
+            }
+          });
+          setFormData(obj)
+        });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +74,6 @@ const Form = () => {
       validation.forEach((item) => {
         obj[item[0]] = item[1];
       });
-      console.log(formData.errors);
       setFormData({...formData, errors: obj});
     }
   };
@@ -68,18 +83,28 @@ const Form = () => {
   };
 
   const handleChange = (e) => {
-    const name = e.target.name
-    const value = e.target.value
-    const key = e.key
-    console.log(e, e.key, e.keyCode)
+    const name = e.target.name;
+    const value = e.target.value;
+    if (/\D/.test(lastKey) && lastKey !== 'Backspace') {
+      return false;
+    }
+
     if (name === 'contribution_revenue' ||
-      name === 'index_revenue') {
-      const input = value.match(/\d/g)
+      name === 'contribution_index') {
+      const input = value.match(/\d/g);
       if (input.length > 1) {
-        input.splice(-3, 2)
+        if (lastKey === 'Backspace') {
+          input.splice(-2, 2);
+        } else {
+          input.splice(-3, 2);
+        }
       }
-      console.log(input)
-      setFormData({...formData, [name]: formatMoneyValue(input.join(''))})
+      setFormData({...formData, [name]: formatMoneyValue(input.join(''))});
+    }
+
+    if (name === 'deadline_revenue' || name === 'rentability_index') {
+      const input = value.match(/^\d{0,3}/).join('');
+      setFormData({...formData, [name]: input});
     }
   };
 
@@ -164,14 +189,14 @@ const Form = () => {
             onChange={handleChange}
             name="rentability_index"
             value={formData.rentability_index}
-            label="Prazo (em meses)"
+            label="Rentabilidade"
             error={formData.errors.rentability_index}
           />
           <InputField
             onChange={handleChange}
             name="cdi_index"
             value={formData.cdi_index}
-            label="IPCA (ao ano)"
+            label="CDI (ao ano)"
             error={formData.errors.cdi_index}
           />
         </Col>

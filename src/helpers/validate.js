@@ -1,5 +1,5 @@
 export const moneyRegex = /^R\$\s[0-9]+$/g;
-export const percentRegex = /^[0-9]+%$/g;
+export const percentRegex = /^[0-9]+,?[0-9]{0,3}\s%$/g
 export const numberRegex = /^[0-9]+$/g;
 
 export const validateForm = (data) => {
