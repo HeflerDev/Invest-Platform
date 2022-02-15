@@ -3,14 +3,19 @@ import {
   Col,
   Row,
 } from 'react-bootstrap';
-import validate from '../helpers/validate';
+import {validateForm,
+  moneyRegex,
+  percentRegex,
+  numberRegex,
+} from '../helpers/validate';
+import {formatMoneyValue} from '../helpers/formatInput';
+
 
 import {
   Buttons,
   Label,
   InputField,
 } from './components';
-
 import {
   AttentionIcon,
   CheckIcon,
@@ -37,10 +42,17 @@ const defaultData = {
 
 const Form = () => {
   const [formData, setFormData] = useState(defaultData);
+  const [lastKey, setLastKey] = useState('')
+
+  useEffect(() => {
+    document.querySelectorAll('input').forEach(item => {
+      item.addEventListener('input', (e) => setLastKey(e.key))
+    })
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validation = validate(formData);
+    const validation = validateForm(formData);
     if (validation.length > 0) {
       const obj = {...defaultData.errors};
       validation.forEach((item) => {
@@ -55,9 +67,20 @@ const Form = () => {
     setFormData(defaultData);
   };
 
-  const handleChange = ({target}) => {
-    const {name, value} = target;
-    setFormData({...formData, [name]: value});
+  const handleChange = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    const key = e.key
+    console.log(e, e.key, e.keyCode)
+    if (name === 'contribution_revenue' ||
+      name === 'index_revenue') {
+      const input = value.match(/\d/g)
+      if (input.length > 1) {
+        input.splice(-3, 2)
+      }
+      console.log(input)
+      setFormData({...formData, [name]: formatMoneyValue(input.join(''))})
+    }
   };
 
   const handleClick = (type, value) => {
@@ -158,10 +181,13 @@ const Form = () => {
             onClick={clearFields}
             text="Limpar Campos" />
           <input
-            className="btn-default submit"
+            className={validateForm(formData).length === 0 ?
+              'btn-default submit' :
+              'disabled btn-default submit'
+            }
             type="submit"
             value="Simular"
-            disabled={validate(formData).length !== 0}
+            onClick={handleSubmit}
           />
         </Col>
       </Row>

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export const Buttons = ({ active = false, className = '', onClick = null, text, icon = false }) => (
-  <button className={active ? `${className} active` : className} onClick={onClick}>
+  <button type="button" className={active ? `${className} active` : className} onClick={onClick}>
   {
     icon && active && icon
   }

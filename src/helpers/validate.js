@@ -1,15 +1,14 @@
-const validate = (data) => {
+export const moneyRegex = /^R\$\s[0-9]+$/g;
+export const percentRegex = /^[0-9]+%$/g;
+export const numberRegex = /^[0-9]+$/g;
+
+export const validateForm = (data) => {
   const errors = [];
 
-  const moneyRegex = /^R\$\s[0-9]+$/g;
-  const percentRegex = /^[0-9]+%$/g;
-  const numberRegex = /^[0-9]+$/g;
 
   if (data.contribution_revenue.length <= 3) {
     errors.push(['contribution_revenue', 'Campo obrigatório.']);
   } else if (!moneyRegex.test(data.contribution_revenue)) errors.push(['contribution_revenue', 'Apenas números são permitidos.']);
-
-  console.log(data.deadline_revenue);
 
   if (data.deadline_revenue.length < 1) {
     errors.push(['deadline_revenue', 'Campo obrigatório.']);
@@ -33,5 +32,3 @@ const validate = (data) => {
 
   return errors;
 };
-
-export default validate;
