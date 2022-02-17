@@ -17,14 +17,15 @@ export const apiDataSlice = createSlice({
     },
     storeData: (state, action) => {
       state.data = {
-        valorFinalBruto: ['Valor Final Bruto', action.payload.valorFinalBruto],
-        aliquotaIR: ['Alíquota IR', action.payload.aliquotaIR],
-        valorPagoIR: ['Valor Pago IR', action.payload.valorPagoIR],
+        valorFinalBruto:
+        ['Valor Final Bruto', 'R$ ' + action.payload.valorFinalBruto],
+        aliquotaIR: ['Alíquota IR', action.payload.aliquotaIR + ' %'],
+        valorPagoIR: ['Valor Pago IR', 'R$ ' + action.payload.valorPagoIR],
         valorTotalInvestido:
-          ['Valor Total Investido', action.payload.valorTotalInvestido],
+          ['Valor Total Investido','R$ ' + action.payload.valorTotalInvestido],
         valorFinalLiquido:
-          ['Valor Final Líquido', action.payload.valorFinalLiquido],
-        ganhoLiquido: ['Ganho Liquido', action.payload.ganhoLiquido],
+          ['Valor Final Líquido','R$ ' + action.payload.valorFinalLiquido],
+        ganhoLiquido: ['Ganho Liquido','R$ ' + action.payload.ganhoLiquido]
       };
 
       state.graphicData = action.payload.graficoValores;
