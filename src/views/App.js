@@ -12,6 +12,7 @@ import {
 } from './components';
 
 import Form from './Form.jsx';
+import SimulationResults from './SimulationResults.jsx'
 
 const App = () => (
   <section>
@@ -19,6 +20,7 @@ const App = () => (
     <Container>
       <Row>
         <Col xs={12}>
+          <SimulationResults />
           <Form />
         </Col>
       </Row>

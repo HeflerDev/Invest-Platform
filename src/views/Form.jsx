@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import { useDispatch } from 'react-redux'
-import { storeData } from '../store/apiDataSlice'
-import { validateForm } from "../helpers/validate"
+import {useDispatch} from 'react-redux';
+import {storeData} from '../store/apiDataSlice';
+import {validateForm} from '../helpers/validate';
 
 import {
   Col,
   Row,
 } from 'react-bootstrap';
-import { formatMoneyValue } from '../helpers/formatInput';
+import {formatMoneyValue} from '../helpers/formatInput';
 
 
 import {
@@ -42,7 +42,7 @@ const defaultData = {
 const Form = () => {
   const [formData, setFormData] = useState({...defaultData});
   const [lastKey, setLastKey] = useState('');
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.querySelectorAll('input').forEach((item) => {
@@ -74,17 +74,24 @@ const Form = () => {
       validation.forEach((item) => {
         obj[item[0]] = item[1];
       });
+      setFormData({...formData, errors: obj});
+      return false;
     }
     setFormData({...formData, errors: obj});
     fetch(`http://localhost:3000/simulacoes?tipoIndexacao=${formData.index_type}&tipoRendimento=${formData.revenue_type}`, {
       method: 'GET',
-      mode: 'cors'
+      mode: 'cors',
     })
-      .then(res => res.json())
-      .then((data) => dispatch( storeData(data) )) };
+        .then((res) => res.json())
+        .then((data) => dispatch( storeData(data[0]) ));
+  };
 
   const clearFields = () => {
-    setFormData({...defaultData, cdi_index: formData.cdi_index, ipca_revenue: formData.ipca_revenue});
+    setFormData({
+      ...defaultData,
+      cdi_index: formData.cdi_index,
+      ipca_revenue: formData.ipca_revenue,
+    });
   };
 
   const handleChange = (e) => {
@@ -129,26 +136,31 @@ const Form = () => {
     }
   };
 
-  const handleFocus = ({ target }) => {
-    const { name, value } = target
-    if (/%$/g.test(value)) setFormData({...formData, [name]: value.slice(0, -2)});
-  }
-
-  const handleBlur = ({ target }) =>  {
-    const { name, value } = target
-
-    let input
-    if (value.length === 0) return false
+  const handleFocus = ({target}) => {
+    const {name, value} = target;
     if (/%$/g.test(value)) {
-      input = value.slice(0, -2)
-    } else {
-      input = value
+      setFormData({
+        ...formData,
+        [name]: value.slice(0, -2),
+      });
     }
-    if (/,$/g.test(input)) input = input.slice(0, -1)
-    if (/^0+/g.test(input)) input = input.replace(/^0+(?!,|$)/, '')
+  };
 
-    setFormData({...formData, [name]: input + ' %'})
-  }
+  const handleBlur = ({target}) => {
+    const {name, value} = target;
+
+    let input;
+    if (value.length === 0) return false;
+    if (/%$/g.test(value)) {
+      input = value.slice(0, -2);
+    } else {
+      input = value;
+    }
+    if (/,$/g.test(input)) input = input.slice(0, -1);
+    if (/^0+/g.test(input)) input = input.replace(/^0+(?!,|$)/, '');
+
+    setFormData({...formData, [name]: input + ' %'});
+  };
 
   const handleClick = (type, value) => {
     setFormData({...formData, [`${type}_type`]: value});
