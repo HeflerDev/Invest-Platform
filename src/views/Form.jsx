@@ -169,7 +169,8 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Row>
-        <Col xs={12}>
+        <Col xs={12}><h2>Simulador</h2></Col>
+        <Col xs={12} lg={6}>
           <Label text="Rendimento" icon={<AttentionIcon />} />
           <div className="btn-container">
             <Buttons
@@ -207,7 +208,7 @@ const Form = () => {
             error={formData.errors.ipca_revenue}
           />
         </Col>
-        <Col xs={12}>
+        <Col xs={12} lg={6}>
           <Label text="Tipo de Indexaçao" icon={<AttentionIcon />} />
           <div className="btn-container">
             <Buttons
@@ -257,7 +258,7 @@ const Form = () => {
             error={formData.errors.cdi_index}
           />
         </Col>
-        <Col>
+        <Col fluid="true">
           <Buttons
             className="btn-default"
             onClick={clearFields}

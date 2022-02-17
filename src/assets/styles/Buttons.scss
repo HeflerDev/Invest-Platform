@@ -8,6 +8,10 @@ button {
   font-size: 14px;
   display: flex;
   justify-content: center;
+  @media (min-width: 992px) {
+    min-width: 6rem;
+    padding: 0.8rem 0.5rem;
+  }
   svg {
     margin: auto 2px;
   }
@@ -25,6 +29,18 @@ button {
 
 .small {
   min-width: 5rem;
+  font-size: 12px;
+  min-height: 46.5px;
+  div {
+    margin: auto 0;
+  }
+  @media (min-width: 992px) {
+    padding: 0;
+    min-width: 4.5rem;
+  }
+  @media (min-width: 1200px) {
+    min-width: 5rem;
+  }
 }
 
 .btn-default {

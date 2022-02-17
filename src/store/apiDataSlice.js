@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {formatMoneyValue} from '../helpers/formatInput';
 
 export const apiDataSlice = createSlice({
   name: 'apiData',
@@ -18,14 +19,23 @@ export const apiDataSlice = createSlice({
     storeData: (state, action) => {
       state.data = {
         valorFinalBruto:
-        ['Valor Final Bruto', 'R$ ' + action.payload.valorFinalBruto],
+        ['Valor Final Bruto', formatMoneyValue(action.payload.valorFinalBruto)],
         aliquotaIR: ['Alíquota IR', action.payload.aliquotaIR + ' %'],
-        valorPagoIR: ['Valor Pago IR', 'R$ ' + action.payload.valorPagoIR],
-        valorTotalInvestido:
-          ['Valor Total Investido','R$ ' + action.payload.valorTotalInvestido],
-        valorFinalLiquido:
-          ['Valor Final Líquido','R$ ' + action.payload.valorFinalLiquido],
-        ganhoLiquido: ['Ganho Liquido','R$ ' + action.payload.ganhoLiquido]
+        valorPagoIR: [
+          'Valor Pago IR',
+          formatMoneyValue(action.payload.valorPagoIR),
+        ],
+        valorTotalInvestido: [
+          'Valor Total Investido',
+          formatMoneyValue(action.payload.valorTotalInvestido),
+        ],
+        valorFinalLiquido: [
+          'Valor Final Líquido',
+          formatMoneyValue(action.payload.valorFinalLiquido)],
+        ganhoLiquido: [
+          'Ganho Liquido',
+          formatMoneyValue(action.payload.ganhoLiquido),
+        ],
       };
 
       state.graphicData = action.payload.graficoValores;

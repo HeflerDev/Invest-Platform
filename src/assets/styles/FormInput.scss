@@ -5,6 +5,12 @@ input {
   outline: none;
   width: 100%;
   font-size: 16px;
+  @media (min-width: 992px) {
+    width: 80%;
+  }
+  @media (min-width: 1200px) {
+    width: 70%;
+};
 }
 
 .input-field {

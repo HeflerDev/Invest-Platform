@@ -10,19 +10,24 @@ const SimulationResults = () => {
 
   console.log(apiData);
   return (
-    <Row>
+    <Col xs={12}>
       {
         apiData && (
-          <Col xs={12}>
+          <>
+          <h2>Resultado da Simulação</h2>
+          <Row>
             {
               Object.entries(apiData).map(([k, value]) => (
-                <DisplayBox key={value[0]} k={value[0]} value={value[1]} />
+                <Col xs={12} md={6} lg={4} key={value[0]}>
+                  <DisplayBox k={value[0]} value={value[1]} />
+                </Col>
               ))
             }
-          </Col>
+          </Row>
+          </>
         )
       }
-    </Row>
+    </Col>
   );
 };
 

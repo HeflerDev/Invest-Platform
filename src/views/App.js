@@ -12,16 +12,19 @@ import {
 } from './components';
 
 import Form from './Form.jsx';
-import SimulationResults from './SimulationResults.jsx'
+import SimulationResults from './SimulationResults.jsx';
 
 const App = () => (
   <section>
     <Heading headingTagSize={1} text={'Simulador de Investimentos'} />
     <Container>
       <Row>
-        <Col xs={12}>
-          <SimulationResults />
+        <Col xs={12} lg={6}>
           <Form />
+        </Col>
+        <Col xs={12} lg={6}>
+
+          <SimulationResults />
         </Col>
       </Row>
     </Container>
