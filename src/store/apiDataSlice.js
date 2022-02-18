@@ -22,27 +22,27 @@ export const apiDataSlice = createSlice({
       state.data = {
         valorFinalBruto:
         ['Valor Final Bruto', formatMoneyValue(action.payload.valorFinalBruto)],
-        aliquotaIR: ['Alíquota IR', action.payload.aliquotaIR + ' %'],
+        aliquotaIR: ['Alíquota do IR', action.payload.aliquotaIR + ' %'],
         valorPagoIR: [
           'Valor Pago IR',
           formatMoneyValue(action.payload.valorPagoIR),
         ],
+        valorFinalLiquido: [
+          'Valor Final Líquido',
+          formatMoneyValue(action.payload.valorFinalLiquido)],
         valorTotalInvestido: [
           'Valor Total Investido',
           formatMoneyValue(action.payload.valorTotalInvestido),
         ],
-        valorFinalLiquido: [
-          'Valor Final Líquido',
-          formatMoneyValue(action.payload.valorFinalLiquido)],
         ganhoLiquido: [
-          'Ganho Liquido',
+          'Ganho Líquido',
           formatMoneyValue(action.payload.ganhoLiquido),
         ],
       };
 
-      state.dataComAporte = formatData(action.payload.graficoValores.comAporte)
+      state.dataComAporte = formatData(action.payload.graficoValores.comAporte);
 
-      state.dataSemAporte = formatData(action.payload.graficoValores.semAporte)
+      state.dataSemAporte = formatData(action.payload.graficoValores.semAporte);
     },
   },
 });

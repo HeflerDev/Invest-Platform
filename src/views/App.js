@@ -23,7 +23,7 @@ const App = () => (
         <Col xs={12} lg={6}>
           <Form />
         </Col>
-        <Col xs={12} lg={6}>
+        <Col xs={12} lg={6} className="d-flex flex-column">
           <SimulationResults />
           <DataChart />
         </Col>
