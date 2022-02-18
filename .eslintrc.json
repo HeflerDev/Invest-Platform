@@ -17,6 +17,7 @@
     "plugins": [
         "react"
     ],
+    "ignorePatterns": ["*.config.js", "*.json"],
     "rules": {
     }
 }

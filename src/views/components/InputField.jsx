@@ -2,7 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Col} from 'react-bootstrap';
 
-export const InputField = ({onFocus = null, onBlur = null, error = null, label, name, onChange, value}) => (
+export const InputField = ({
+  onFocus = null,
+  onBlur = null,
+  error = null,
+  label,
+  name,
+  onChange,
+  value,
+}) => (
   <Col xs={12} className="input-field">
     <label
       htmlFor={name}
@@ -30,6 +38,8 @@ InputField.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   error: PropTypes.string,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 InputField.defaultProps = {
