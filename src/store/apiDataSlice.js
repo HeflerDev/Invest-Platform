@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {formatMoneyValue} from '../helpers/formatInput';
+import formatData from '../helpers/formatData';
 
 export const apiDataSlice = createSlice({
   name: 'apiData',
@@ -7,7 +8,8 @@ export const apiDataSlice = createSlice({
     loading: false,
     errors: null,
     data: null,
-    graphicData: null,
+    dataComAporte: null,
+    dataSemAporte: null,
   },
   reducers: {
     swapLoadingState: (state, action) => {
@@ -38,7 +40,9 @@ export const apiDataSlice = createSlice({
         ],
       };
 
-      state.graphicData = action.payload.graficoValores;
+      state.dataComAporte = formatData(action.payload.graficoValores.comAporte)
+
+      state.dataSemAporte = formatData(action.payload.graficoValores.semAporte)
     },
   },
 });

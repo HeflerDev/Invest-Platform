@@ -13,6 +13,7 @@ import {
 
 import Form from './Form.jsx';
 import SimulationResults from './SimulationResults.jsx';
+import DataChart from './DataChart.jsx';
 
 const App = () => (
   <section>
@@ -23,8 +24,8 @@ const App = () => (
           <Form />
         </Col>
         <Col xs={12} lg={6}>
-
           <SimulationResults />
+          <DataChart />
         </Col>
       </Row>
     </Container>
