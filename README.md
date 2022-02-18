@@ -161,7 +161,7 @@ Hefler - [@heflerdev](https://www.instagram.com/heflerdev/) - heflerdev@gmail.co
 [issues-shield]: https://img.shields.io/github/issues/heflerdev/invest-platform.svg?style=for-the-badge
 [issues-url]: https://github.com/HeflerDev/invest-platform/issues
 [license-shield]: https://img.shields.io/github/license/heflerdev/invest-platform.svg?style=for-the-badge
-[license-url]: https://github.com/heflerdev/invest-platform/LICENSE.txt
+[license-url]: https://github.com/heflerdev/invest-platform/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-default.svg?style=for-the-badge&logo=linkedin&colorB=blue
 [linkedin-url]: https://linkedin.com/in/heflerdev
 [product-screenshot]: images/screenshot.png
