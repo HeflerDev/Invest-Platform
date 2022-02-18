@@ -13,6 +13,7 @@ body {
 
 section {
   background-color: $secondary;
+  min-height: 100vh;
   color: $dark;
   padding: 2rem 1rem;
   font-size: 12px;
